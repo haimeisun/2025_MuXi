@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>表单</title>
+  </head>
+  <body>
+    <h1>用户资料设置</h1>
+
+    <form>
+      <div>
+        <label>头像</label>
+        <input type="file" />
+        <span>未选择任何文件</span>
+      </div>
+
+      <div>
+        <label for="name">昵称</label>
+        <input type="text" id="name" name="username" required />
+      </div>
+
+      <div>
+        <label>学历</label>
+        <select>
+          <option>大专</option>
+          <option>本科</option>
+        </select>
+      </div>
+
+      <div>
+        <label>性别</label>
+        <input type="radio" name="gender" value="male" />男
+        <input type="radio" name="gender" value="female" />女
+      </div>
+
+      <div>
+        <label>签名</label>
+        <textarea rows="3" cols="40"></textarea>
+      </div>
+
+      <button type="submit">保存</button>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>作业3：矩形与扇形布局（简化版）</title>
+    <style>
+      .container {
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+      }
+
+      .rectangle {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 300px;
+        height: 200px;
+        background-color: #ccc;
+        overflow: hidden; /* 关键：隐藏溢出内容 */
+      }
+
+      /* 左上角圆形 */
+      .rectangle::before {
+        content: "";
+        position: absolute;
+        top: -30px; /* 圆心位于矩形左上角顶点 */
+        left: -30px;
+        width: 60px; /* 直径=60px（半径30px） */
+        height: 60px;
+        border-radius: 50%;
+        background-color: #fc0;
+      }
+
+      /* 右下角圆形 */
+      .rectangle::after {
+        content: "";
+        position: absolute;
+        bottom: -30px; /* 圆心位于矩形右下角顶点 */
+        right: -30px;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background-color: #fc0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="rectangle"></div>
+    </div>
+  </body>
+</html>
