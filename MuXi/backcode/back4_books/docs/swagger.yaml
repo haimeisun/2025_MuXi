@@ -1,0 +1,118 @@
+basePath: /
+definitions:
+  main.Book:
+    properties:
+      author:
+        type: string
+      id:
+        type: string
+      stock:
+        type: string
+      title:
+        type: string
+    type: object
+  main.Response:
+    properties:
+      code:
+        type: integer
+      data: {}
+      message:
+        type: string
+    type: object
+host: localhost：8080
+info:
+  contact: {}
+  description: 实现对图书的增删查改功能的图书管理系统
+  title: 图书管理系统
+  version: "1.0"
+paths:
+  /books/delete/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: 根据图书ID删除图书
+      parameters:
+      - description: 图书删除成功
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 图书删除成功
+          schema:
+            $ref: '#/definitions/main.Response'
+        "400":
+          description: 图书不存在
+          schema:
+            $ref: '#/definitions/main.Response'
+      summary: 删除图书
+      tags:
+      - 图书
+  /books/search:
+    get:
+      description: 根据图书ID查询图书
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 图书列表
+          schema:
+            allOf:
+            - $ref: '#/definitions/main.Response'
+            - properties:
+                data:
+                  items:
+                    $ref: '#/definitions/main.Book'
+                  type: array
+              type: object
+      summary: 查询图书
+      tags:
+      - 图书
+  /books/update/{id}:
+    put:
+      consumes:
+      - application/json
+      description: 根据ID更新图书信息
+      parameters:
+      - description: 图书ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: 更新后图书信息
+        in: body
+        name: book
+        required: true
+        schema:
+          $ref: '#/definitions/main.Book'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 图书更新成功
+          schema:
+            allOf:
+            - $ref: '#/definitions/main.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/main.Book'
+              type: object
+        "400":
+          description: 参数绑定失败
+          schema:
+            $ref: '#/definitions/main.Response'
+        "404":
+          description: 路径ID与请求ID不一致
+          schema:
+            $ref: '#/definitions/main.Response'
+        "409":
+          description: 图书不存在
+          schema:
+            $ref: '#/definitions/main.Response'
+      summary: 更新图书
+      tags:
+      - 图书
+swagger: "2.0"
