@@ -1,0 +1,34 @@
+.counter-container {
+  display: flex;
+  flex-direction: column; /*垂直排列*/
+  align-items: center;
+  justify-content: center; /*水平，垂直居中对齐*/
+  height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+.counter-value {
+  font-size: 48px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.button-group {
+  display: flex;
+  gap: 15px;
+}
+
+.action-button {
+  padding: 12px 24px;
+  font-size: 16px;
+  background-color: #4a6cf7;
+  color: white;
+  border: none;
+  border-radius: 4px; /*圆角*/
+  cursor: pointer;
+  transition: background-color 0.3s; /*渐变色效果*/
+}
+
+.action-button:hover {
+  background-color: #3550d3;
+}
